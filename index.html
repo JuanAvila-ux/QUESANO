@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QUESANO – Queso costeño artesanal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap">
+<script>
+try {
+  const savedTheme=localStorage.getItem('quesano-theme');
+  if(savedTheme==='light'||savedTheme==='dark') document.documentElement.dataset.theme=savedTheme;
+} catch(error) {
+  console.warn('No se pudo recuperar el tema guardado.',error);
+}
+</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header><nav aria-label="Principal">
+  <a class="brand" href="#top">
+    <img alt="Logo Quesano" class="logo-nav logo-src">
+    <span>QUESANO</span>
+  </a>
+  <div class="links">
+    <a href="#catalogo">Catálogoo</a>
+    <a href="#esencia">Nuestra esencia</a>
+    <a href="#pedido">Cómo pedir</a>
+    <a href="#contacto">Contacto</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false"><span aria-hidden="true">☾</span></button>
+    <a class="btn" href="#pedido">Hacer pedido ↗</a>
+  </div>
+</nav></header>
+
+<main id="top">
+<!-- HERO SECTION -->
+<div class="wrap hero">
+  <div>
+    <span class="eyebrow">Tradición costeña & frescura boyacense</span>
+    <h1>El sabor de la costa,<em>fresco de Boyacá.</em></h1>
+    <p class="lead">Queso costeño artesanal inspirado en la receta tradicional caribeña elaborado con leche fresca de Ventaquemada. Textura firme y perfecta sazón.</p>
+    
+    <!-- SELECTOR DE PRESENTACIONES EN EL HERO -->
+    <div class="pick-container">
+      <div class="pick-title">Elige tu presentación favorita:</div>
+      <div class="pick" role="group" aria-label="Elige un sabor de queso costeño">
+        <button data-f="0" aria-pressed="true"><span class="dot"></span>Tradicional</button>
+        <button data-f="1" aria-pressed="false"><span class="dot"></span>Picante</button>
+        <button data-f="2" aria-pressed="false"><span class="dot"></span>Finas hierbas</button>
+      </div>
+      <p id="flavorText" aria-live="polite"></p>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="#catalogo">Ver catálogo completo ↓</a>
+      <a class="btn ghost" href="#pedido">Pedir ahora por WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div id="coverWrapper" class="cover-wrapper">
+      <svg id="cover" viewBox="0 0 400 400" role="img" aria-label="Queso Quesano con la marca estampada"></svg>
+    </div>
+    <div class="float a"><b>Ventaquemada, Boyacá</b>Leche fresca de origen local</div>
+    <div class="float b"><b id="floatTitle">Queso costeño tradicional</b>Artesanal y firme · $14.000 / 500 g</div>
+  </div>
+</div>
+
+<!-- DESCRIPCIÓN DEL PRODUCTO -->
+<section class="alt" id="producto"><div class="wrap">
+  <span class="eyebrow">Conoce el producto</span>
+  <h2>Queso costeño artesanal, hecho en Boyacá</h2>
+  <p class="sub">QUESANO combina una preparación inspirada en la tradición caribeña con leche fresca de Ventaquemada.</p>
+  <div class="cards">
+    <article class="card rev"><h3>¿Qué es?</h3><p>Queso costeño artesanal de textura firme, elaborado con leche fresca de productores locales.</p></article>
+    <article class="card rev"><h3>¿Qué necesidad atiende?</h3><p>Facilita elegir y pedir queso costeño en Boyacá, con información clara sobre sus variedades y presentación.</p></article>
+    <article class="card rev"><h3>¿Cómo funciona?</h3><p>Elige una variedad, agrégala a tu pedido y confirma los detalles directamente por WhatsApp.</p></article>
+    <article class="card rev"><h3>Características y beneficios</h3><p>Tradicional, con ají o finas hierbas; cada presentación es de 500 g y sellada al vacío, lista para compartir en tus comidas.</p></article>
+  </div>
+</div></section>
+
+<!-- SECCIÓN ORIGEN Y PROCESO -->
+<section class="alt center" id="origen"><div class="wrap">
+  <span class="eyebrow">Lo que nos hace especiales</span>
+  <h2>Un sabor con auténtico origen</h2>
+  <p class="sub">Desde Ariguaní, Magdalena trajimos el secreto de la preparación costeña y lo combinamos con la pureza de la leche de Boyacá.</p>
+  <div class="cards">
+    <div class="card rev"><div class="ic">🥛</div><h3>Leche pura local</h3><p>Proveniente de ganaderos de Ventaquemada, garantizando la mayor frescura en cada bloque.</p></div>
+    <div class="card rev"><div class="ic">🧀</div><h3>Sabor costeño real</h3><p>Firme, con el punto ideal de sal para tus arepas, desayunos, patacones y recetas.</p></div>
+    <div class="card rev"><div class="ic">📦</div><h3>Sellado al vacío</h3><p>Conservación optima con cadena de frío para mantener su textura y aroma intactos.</p></div>
+  </div>
+</div></section>
+
+<!-- CATÁLOGO COMPLETO CON LAS 3 PRESENTACIONES -->
+<section id="catalogo"><div class="wrap center">
+  <span class="eyebrow">Catálogo de Productos</span>
+  <h2>Nuestras 3 Presentaciones</h2>
+  <p class="sub">Elige tu favorita o arma tu combo con las tres variedades en empaques de 500 g sellados al vacío.</p>
+  <div class="cards" id="cat"></div>
+</div></section>
+
+<!-- MODELO DE NEGOCIO -->
+<section id="modelo"><div class="wrap">
+  <span class="eyebrow">Precio y adquisición</span>
+  <h2>Un modelo sencillo y directo</h2>
+  <p class="sub">El precio es una referencia para esta propuesta académica; la disponibilidad y el valor final se confirman al hacer el pedido.</p>
+  <div class="cards">
+    <article class="card rev"><h3>Precio estimado</h3><div class="price">$14.000<small>COP / 500 g</small></div><p>Precio de referencia por presentación. No se anuncian descuentos ni tarifas por volumen.</p></article>
+    <article class="card rev"><h3>Cómo adquirirlo</h3><p>Selecciona una variedad y coordina tu pedido directamente por WhatsApp, sujeto a disponibilidad.</p></article>
+    <article class="card rev"><h3>Cómo se sostiene</h3><p>La propuesta se sostiene mediante la venta directa de presentaciones de queso. Los costos y el precio final deben validarse antes de ofrecerlos comercialmente.</p></article>
+  </div>
+</div></section>
+
+<!-- GALERÍA DE DISEÑOS -->
+<section class="alt" id="galeria"><div class="wrap center">
+  <span class="eyebrow">Diseños del producto</span>
+  <h2>Galería de variedades</h2>
+  <p class="sub">Ilustraciones digitales para mostrar las tres variedades; son diseños de referencia, no fotografías del producto.</p>
+  <div class="cards gallery" id="gallery"></div>
+</div></section>
+
+<!-- NUESTRA ESENCIA CON LOGO OFICIAL EN TAMAÑO DESTACADO -->
+<section class="alt" id="esencia"><div class="wrap split">
+  <div class="emblem">
+    <img class="logo-src" alt="Logo oficial Quesano" style="width:240px;max-width:100%;height:auto;border-radius:18px">
+  </div>
+  <div>
+    <span class="eyebrow">Nuestra Esencia</span>
+    <h2>De una tradición caribeña nace un gran sabor.</h2>
+    <p class="sub" style="margin-bottom:0">QUESANO es un emprendimiento de producción y comercialización de queso costeño artesanal. Unimos la herencia cultural del Caribe con la riqueza del campo boyacense.</p>
+    <ul class="ticks">
+      <li><span><b>Para tu hogar:</b> El ingrediente infaltable en el desayuno y las cenas familiares.</span></li>
+      <li><span><b>Para tu negocio:</b> Excelente rendimiento y sabor consistente para restaurantes, panaderías y cafeterías.</span></li>
+      <li><span><b>Calidad garantizada:</b> Proceso higiénico y riguroso en cada lote.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- PROPUESTA DE VALOR -->
+<section id="valor"><div class="wrap">
+  <span class="eyebrow">Nuestra propuesta de valor</span>
+  <h2>Tradición costeña con origen local</h2>
+  <p class="sub">Una alternativa artesanal, fácil de conocer y pedir, que conecta sabores del Caribe con productores de Boyacá.</p>
+  <div class="cards">
+    <article class="card rev"><h3>Valor principal</h3><p>Queso costeño artesanal en tres variedades, con presentación de 500 g y pedido directo.</p></article>
+    <article class="card rev"><h3>Diferenciador</h3><p>Une una preparación inspirada en la tradición caribeña con leche fresca de Ventaquemada.</p></article>
+    <article class="card rev"><h3>Necesidad que atiende</h3><p>Ayuda a comparar las variedades y coordinar la compra en un solo lugar, sin pasos de pago dentro de la página.</p></article>
+    <article class="card rev"><h3>Impacto esperado</h3><p>La propuesta prioriza el trabajo con productores locales. También declara compromisos de uso eficiente del agua, aprovechamiento del suero y reciclaje; son metas del proyecto, no certificaciones.</p></article>
+  </div>
+</div></section>
+
+<!-- PASOS DE PROCESAMIENTO -->
+<section id="proceso"><div class="wrap">
+  <span class="eyebrow">Cómo lo hacemos</span>
+  <h2>Del ordeño a tu mesa</h2>
+  <p class="sub">Trabajamos de la mano con productores locales para ofrecerte queso costeño artesanal con los más altos estándares de calidad.</p>
+  <div class="cards steps">
+    <div class="card step rev"><h3>Leche fresca</h3><p>Acopio directo en Ventaquemada, Boyacá.</p></div>
+    <div class="card step rev"><h3>Receta costeña</h3><p>Cuajo y la cantidad precisa de sal tradicional.</p></div>
+    <div class="card step rev"><h3>Prensado a mano</h3><p>Obtenemos la textura firme característica del queso costeño.</p></div>
+    <div class="card step rev"><h3>Empaque al vacío</h3><p>Listo para despacho con refrigeración garantizada.</p></div>
+  </div>
+</div></section>
+
+<!-- CLIENTES / PARA QUIÉN -->
+<section class="alt" id="clientes"><div class="wrap">
+  <span class="eyebrow">Soluciones a tu medida</span>
+  <h2>¿Para quién es Quesano?</h2>
+  <p class="sub">Ofrecemos atención tanto para consumo familiar como ventas al por mayor.</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="0">Mi casa</button>
+    <button role="tab" aria-selected="false" data-t="1">Mi negocio</button>
+    <button role="tab" aria-selected="false" data-t="2">Mi tienda / Supermercado</button>
+  </div>
+  <div class="panel" role="tabpanel">
+    <div><h3 id="pt"></h3><p id="pd"></p></div>
+    <ul id="pl"></ul>
+  </div>
+</div></section>
+
+<!-- SECCIÓN FORMULARIO DE PEDIDO -->
+<section id="pedido"><div class="wrap ord">
+  <div>
+    <span class="eyebrow">Tu pedido directo</span>
+    <h2>Haz tu pedido fácilmente</h2>
+    <p class="lead">Completa los detalles y generaremos tu mensaje personalizado directo a nuestro canal oficial de WhatsApp.</p>
+    <ul class="nums">
+      <li><span>1</span>Selecciona tu presentación y cantidad.</li>
+      <li><span>2</span>Escribe tus datos de envío en Tunja o municipios cercanos.</li>
+      <li><span>3</span>Confirma tu pedido directamente por WhatsApp.</li>
+    </ul>
+  </div>
+  <form autocomplete="off">
+    <h3>Arma tu pedido</h3>
+    <p class="s">Elige tus productos y se abrirá WhatsApp listo para enviar.</p>
+    <label for="nm">Tu nombre</label>
+    <input id="nm" placeholder="¿Cómo te llamas?">
+    <div class="two">
+      <div>
+        <label for="sel">Presentación</label>
+        <select id="sel"></select>
+      </div>
+      <div>
+        <label for="qs">Cantidad</label>
+        <select id="qs"></select>
+      </div>
+    </div>
+    <label for="ent">Método de entrega</label>
+    <select id="ent">
+      <option>Domicilio en Tunja</option>
+      <option>Recoger en punto de atención Tunja</option>
+      <option>Envío a municipios cercanos (Boyacá)</option>
+    </select>
+    <label for="ci">Barrio o Municipio de entrega</label>
+    <input id="ci" placeholder="Ej. Tunja, Barrio Centro / Maldonado...">
+    <label for="de">Notas adicionales (opcional)</label>
+    <textarea id="de" placeholder="¿Es para tu consumo o para un establecimiento comercial?"></textarea>
+    
+    <div class="tot">
+      <span>Total estimado:</span>
+      <b id="tot">$14.000</b>
+    </div>
+    
+    <div class="fbtns">
+      <button type="button" class="btn ghost" id="add" style="color:#174B3A!important;border-color:#174B3A">🧺 Agregar a la canasta</button>
+      <button type="button" class="btn" id="go">Continuar a WhatsApp ↗</button>
+    </div>
+    <p class="note">Precios expresados en COP. Entregas sujetas a cobertura y confirmación de disponibilidad.</p>
+  </form>
+</div></section>
+
+<!-- SECCIÓN CUIDADO -->
+<section id="cuidado"><div class="wrap center">
+  <span class="eyebrow">Compromiso</span>
+  <h2>Producción Responsable</h2>
+  <p class="sub">Nos preocupamos por el medio ambiente y el bienestar de nuestra región.</p>
+  <div class="cards">
+    <div class="card rev"><h3>Uso eficiente del agua</h3><p>Compromiso del proyecto: procurar optimizar el uso del agua en los procesos de lavado e higiene.</p></div>
+    <div class="card rev"><h3>Manejo del suero</h3><p>Compromiso del proyecto: buscar alternativas de aprovechamiento del lactosuero.</p></div>
+    <div class="card rev"><h3>Reciclaje</h3><p>Compromiso del proyecto: separar los residuos desde su origen.</p></div>
+    <div class="card rev"><h3>Frescura bajo pedido</h3><p>La propuesta busca ajustar la producción a los pedidos para reducir desperdicios.</p></div>
+  </div>
+</div></section>
+
+<!-- COMPLIANCE Y PRIVACIDAD -->
+<section class="alt" id="compliance"><div class="wrap">
+  <span class="eyebrow">Transparencia y privacidad</span>
+  <h2>Uso responsable de la información</h2>
+  <p class="sub">El formulario prepara un mensaje con los datos que escribes. Tú decides si continúas a WhatsApp y lo envías; la página no tiene un sistema propio para guardar pedidos.</p>
+  <div class="cards">
+    <article class="card rev"><h3>Compromisos</h3><p>Solicitar solo información necesaria; usarla para atender solicitudes relacionadas con QUESANO y no compartirla sin autorización previa.</p></article>
+    <article class="card rev"><h3>Riesgo identificado</h3><p>Uso inadecuado o divulgación no autorizada de datos personales, como el nombre o la zona de entrega incluidos en un mensaje.</p></article>
+    <article class="card rev"><h3>Medidas preventivas</h3><p>Limitar los datos solicitados, restringir su acceso a integrantes autorizados del proyecto y pedir autorización antes de compartirlos.</p></article>
+  </div>
+</div></section>
+
+<!-- CONTACTO -->
+<section class="alt" id="contacto"><div class="wrap contact">
+  <div>
+    <span class="eyebrow">Estamos para atenderte</span>
+    <h2>¡Hagamos equipo!</h2>
+    <p class="sub">Atendemos pedidos personales y alianzas comerciales con restaurantes, tiendas, cafeterías y distribuidores.</p>
+    <a class="btn" href="https://wa.me/573102981542" target="_blank" rel="noopener">Escribir por WhatsApp ↗</a>
+  </div>
+  <div class="info">
+    <div class="card"><b>Zona principal de entrega</b><span>Tunja, Boyacá, Colombia</span></div>
+    <div class="card"><b>Línea Directa & WhatsApp</b><span>+57 310 298 1542</span></div>
+    <div class="card"><b>Atención a negocios</b><span>Consulta disponibilidad y condiciones directamente por WhatsApp.</span></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="#top">
+    <img alt="Logo Quesano" class="logo-nav logo-src" style="width:40px;height:40px">
+    <span>QUESANO</span>
+  </a>
+  <span>Del campo a tu mesa · Desde Ariguaní, Magdalena hasta Boyacá</span>
+  <span>© 2026 QUESANO · Todos los derechos reservados</span>
+</div></footer>
+
+<!-- DRAWER CANASTA Y BOTONES FLOTANTES -->
+<div id="drawer" role="dialog" aria-modal="true" aria-label="Tu canasta" aria-hidden="true">
+  <div class="drawer-panel" tabindex="-1">
+    <h3>Tu Canasta</h3>
+    <div id="items"></div>
+    <div class="tot"><span>Total estimado:</span><b id="ctot">$0</b></div>
+    <a class="btn" id="cwa" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+  </div>
+</div>
+
+<button class="fab" id="fabCart" aria-label="Abrir canasta" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-2 11H5L3 9z"/><path d="M8 9l4-6 4 6"/></svg>
+  <b id="cnt">0</b>
+</button>
+
+<a class="fab" id="fabWa" href="https://wa.me/573102981542" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A9 9 0 1 1 8 19.5L3 21z"/><path d="M9 10c0 3 2 5 5 5l1.2-1.4-2-1-.8.8c-.8-.4-1.6-1.2-2-2l.8-.8-1-2L9 10z" fill="currentColor" stroke="none"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script src="js/script.js" defer></script>
+<script src="js/carrito.js" defer></script>
+</body>
+</html>

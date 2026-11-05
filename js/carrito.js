@@ -1,0 +1,125 @@
+(() => {
+  const products = F;
+  const cart = new Map();
+  const drawer = document.getElementById('drawer');
+  const panel = drawer.querySelector('.drawer-panel');
+  const items = document.getElementById('items');
+  const count = document.getElementById('cnt');
+  const total = document.getElementById('ctot');
+  const cartLink = document.getElementById('cwa');
+  const cartButton = document.getElementById('fabCart');
+
+  function getItems() {
+    return [...cart.entries()].map(([index, quantity]) => ({
+      index,
+      quantity,
+      product: products[index]
+    }));
+  }
+
+  function getTotal() {
+    return getItems().reduce((sum, item) => sum + item.quantity * P, 0);
+  }
+
+  function render() {
+    const cartItems = getItems();
+    const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const cartTotal = getTotal();
+
+    count.textContent = itemCount;
+    total.textContent = fmt(cartTotal);
+    items.replaceChildren();
+
+    if (!cartItems.length) {
+      const empty = document.createElement('p');
+      empty.className = 'empty';
+      empty.textContent = 'Tu canasta está vacía. Elige una presentación del catálogo.';
+      items.append(empty);
+      cartLink.href = '#';
+      return;
+    }
+
+    for (const item of cartItems) {
+      const row = document.createElement('div');
+      row.className = 'it';
+
+      const description = document.createElement('div');
+      const name = document.createElement('b');
+      name.textContent = item.product.full;
+      const details = document.createElement('small');
+      details.textContent = `500 g · ${fmt(P)}`;
+      description.append(name, details);
+
+      const quantity = document.createElement('div');
+      quantity.className = 'q';
+
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.dataset.cartAction = 'remove';
+      removeButton.dataset.product = item.index;
+      removeButton.setAttribute('aria-label', `Quitar ${item.product.full}`);
+      removeButton.textContent = '−';
+
+      const amount = document.createElement('b');
+      amount.textContent = item.quantity;
+
+      const addButton = document.createElement('button');
+      addButton.type = 'button';
+      addButton.dataset.cartAction = 'add';
+      addButton.dataset.product = item.index;
+      addButton.setAttribute('aria-label', `Agregar ${item.product.full}`);
+      addButton.textContent = '+';
+
+      quantity.append(removeButton, amount, addButton);
+      row.append(description, quantity);
+      items.append(row);
+    }
+
+    const lines = cartItems
+      .map(item => `• ${item.quantity} x ${item.product.full} (500 g)`)
+      .join('\n');
+    const message = `Hola QUESANO, quiero hacer el siguiente pedido:\n${lines}\n\nTotal estimado: ${fmt(cartTotal)} COP.`;
+    cartLink.href = `https://wa.me/${PH}?text=${encodeURIComponent(message)}`;
+  }
+
+  function add(productIndex, amount = 1) {
+    if (!Number.isInteger(productIndex) || !products[productIndex] || !Number.isInteger(amount)) {
+      return;
+    }
+
+    const quantity = (cart.get(productIndex) || 0) + amount;
+    if (quantity > 0) {
+      cart.set(productIndex, quantity);
+    } else {
+      cart.delete(productIndex);
+    }
+    render();
+  }
+
+  function open(force = !drawer.classList.contains('open')) {
+    drawer.classList.toggle('open', force);
+    drawer.setAttribute('aria-hidden', String(!force));
+    cartButton.setAttribute('aria-expanded', String(force));
+    if (force) panel.focus();
+  }
+
+  items.addEventListener('click', event => {
+    const button = event.target.closest('button[data-cart-action]');
+    if (!button) return;
+
+    const productIndex = Number(button.dataset.product);
+    add(productIndex, button.dataset.cartAction === 'add' ? 1 : -1);
+  });
+
+  cartButton.addEventListener('click', () => open());
+  drawer.addEventListener('click', event => {
+    if (event.target === drawer) open(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && drawer.classList.contains('open')) open(false);
+  });
+
+  window.quesanoCart = { add, getItems, getTotal, open };
+  drawer.setAttribute('aria-hidden', 'true');
+  render();
+})();
