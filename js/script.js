@@ -8,7 +8,7 @@ const F=[
    n:'Tradicional',
    full:'Queso costeño tradicional',
    tag:'El clásico costeño',
-   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM.jpeg',
+   image:'assets/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM.jpeg',
    imageAlt:'Queso costeño tradicional natural servido en una mesa',
    base:'#FAF3DF', edge:'#E5D19A', labelBg:'#F7F0D8',
    d:'El auténtico queso costeño artesanal en presentación redonda tradicional. Sabor suave para acompañar tus comidas.'
@@ -17,7 +17,7 @@ const F=[
    n:'Picante',
    full:'Queso costeño con ají',
    tag:'Con toque de ají',
-   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.45.26%20AM.jpeg',
+   image:'assets/WhatsApp%20Image%202026-11-06%20at%2011.45.26%20AM.jpeg',
    imageAlt:'Queso picante gourmet Quesaño con trozos de ají',
    base:'#F2AC6B', edge:'#D87B37', labelBg:'#FCE5C8',
    d:'Variedad anaranjada con trocitos de ají visible y un toque picante único. Ideal para picar o asados.'
@@ -26,8 +26,8 @@ const F=[
    n:'Finas hierbas',
    full:'Queso costeño con finas hierbas',
    tag:'Aromático y fresco',
-   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(3).jpeg',
-   imageAlt:'Queso Quesaño con finas hierbas acompañado de pimentón y cebolla',
+   image:'assets/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(1).jpeg',
+   imageAlt:'Queso con finas hierbas acompañado de pimentón rojo y cebolla morada',
    base:'#E6EED0', edge:'#A8BD7A', labelBg:'#EEF3E2',
    d:'Queso redondo salpicado con finas hierbas integradas. Exquisito para tablas de quesos y gratinados.'
  }

@@ -162,7 +162,8 @@ footer .brand{color:#FBF7EE}footer a{opacity:.85}
 .it{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:.88rem}
 .it small{display:block;color:var(--muted)}
 .it .q{display:flex;align-items:center;gap:6px}.it .q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--alt);color:var(--text);cursor:pointer;font-weight:800}
-.empty{color:var(--muted);font-size:.9rem}
+.empty-state{display:grid;justify-items:start;gap:12px;margin:12px 0;padding:18px;border:1px dashed var(--line);border-radius:16px;background:var(--alt)}
+.empty-state p{margin:0;color:var(--muted);font-size:.9rem}
 
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--gold) 42%,var(--line));box-shadow:0 16px 34px rgba(23,75,58,.12)}

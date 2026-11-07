@@ -31,9 +31,19 @@
     items.replaceChildren();
 
     if (!cartItems.length) {
-      const empty = document.createElement('p');
-      empty.className = 'empty';
-      empty.textContent = 'Tu canasta está vacía. Elige una presentación del catálogo.';
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.setAttribute('role', 'status');
+
+      const message = document.createElement('p');
+      message.textContent = 'Tu canasta está vacía. Agrega un producto para comenzar.';
+
+      const catalogLink = document.createElement('a');
+      catalogLink.className = 'btn';
+      catalogLink.href = '#catalogo';
+      catalogLink.textContent = 'Agregar producto';
+
+      empty.append(message, catalogLink);
       items.append(empty);
       cartLink.href = '#';
       return;
@@ -104,6 +114,11 @@
   }
 
   items.addEventListener('click', event => {
+    if (event.target.closest('.empty-state a')) {
+      open(false);
+      return;
+    }
+
     const button = event.target.closest('button[data-cart-action]');
     if (!button) return;
 
