@@ -8,24 +8,27 @@ const F=[
    n:'Tradicional',
    full:'Queso costeño tradicional',
    tag:'El clásico costeño',
+   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM.jpeg',
+   imageAlt:'Queso costeño tradicional natural servido en una mesa',
    base:'#FAF3DF', edge:'#E5D19A', labelBg:'#F7F0D8',
-   t:'El clásico infaltable: rueda redonda de textura firme, suavemente salado e ideal para rallar, freír o acompañar arepas.',
    d:'El auténtico queso costeño artesanal en presentación redonda tradicional. Sabor suave para acompañar tus comidas.'
  },
  {
    n:'Picante',
    full:'Queso costeño con ají',
    tag:'Con toque de ají',
+   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.45.26%20AM.jpeg',
+   imageAlt:'Queso picante gourmet Quesaño con trozos de ají',
    base:'#F2AC6B', edge:'#D87B37', labelBg:'#FCE5C8',
-   t:'Rueda de queso infundida con hojuelas de ají rojo que entregan un picante sabroso y balanceado.',
    d:'Variedad anaranjada con trocitos de ají visible y un toque picante único. Ideal para picar o asados.'
  },
  {
    n:'Finas hierbas',
    full:'Queso costeño con finas hierbas',
    tag:'Aromático y fresco',
+   image:'img/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(3).jpeg',
+   imageAlt:'Queso Quesaño con finas hierbas acompañado de pimentón y cebolla',
    base:'#E6EED0', edge:'#A8BD7A', labelBg:'#EEF3E2',
-   t:'Rueda redonda repleta de finas hierbas seleccionadas que le otorgan un perfume y sabor aromático en cada bocado.',
    d:'Queso redondo salpicado con finas hierbas integradas. Exquisito para tablas de quesos y gratinados.'
  }
 ];
@@ -119,8 +122,6 @@ const cover=document.getElementById('cover');
 
 function draw(i){
   cover.innerHTML=cheese(i);
-  document.getElementById('flavorText').textContent=F[i].t;
-  document.getElementById('floatTitle').textContent=F[i].full;
   document.querySelectorAll('.pick button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
   sel.selectedIndex=i;
   upd();
@@ -132,7 +133,7 @@ document.querySelectorAll('.pick button').forEach(b=>b.onclick=()=>draw(+b.datas
 document.getElementById('cat').innerHTML=F.map((f,i)=>`
   <article class="card prod rev">
     <div class="pic" data-flavor="${i}">
-      <svg viewBox="0 40 400 320" role="img" aria-label="Queso costeño ${f.n.toLowerCase()}">${cheese(i)}</svg>
+      <img src="${f.image}" alt="${f.imageAlt}" loading="lazy" decoding="async">
       <span class="tg">${f.tag}</span>
     </div>
     <div class="bd">
@@ -150,19 +151,6 @@ document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{
   window.quesanoCart.add(+b.dataset.a,1);
   window.quesanoCart.open(true);
 });
-
-/* GALERÍA DE DISEÑOS */
-document.getElementById('gallery').innerHTML=F.map((f,i)=>`
-  <figure class="card gallery-card rev">
-    <div class="gallery-art">
-      <svg viewBox="0 40 400 320" role="img" aria-label="Ilustración de ${f.full}">${cheese(i)}</svg>
-    </div>
-    <figcaption>
-      <h3>${f.full}</h3>
-      <p>${f.d}</p>
-    </figcaption>
-  </figure>
-`).join('');
 
 /* FORMULARIO Y SINCRONIZACIÓN */
 const sel=document.getElementById('sel'), qs=document.getElementById('qs'), ent=document.getElementById('ent');
