@@ -4,115 +4,27 @@ const PH='573102981542', P=14000, fmt=v=>'$'+v.toLocaleString('es-CO');
 
 const F=[
  {
-   n:'Tradicional',
    full:'Queso costeño tradicional',
    tag:'El clásico costeño',
    image:'assets/queso-costeno-tradicional.jpeg',
    imageAlt:'Queso costeño tradicional natural servido en una mesa',
-   base:'#FAF3DF', edge:'#E5D19A', labelBg:'#F7F0D8',
    d:'El auténtico queso costeño artesanal en presentación redonda tradicional. Sabor suave para acompañar tus comidas.'
  },
  {
-   n:'Picante',
    full:'Queso costeño con ají',
    tag:'Con toque de ají',
    image:'assets/queso-costeno-picante.jpeg',
    imageAlt:'Queso picante gourmet Quesaño con trozos de ají',
-   base:'#F2AC6B', edge:'#D87B37', labelBg:'#FCE5C8',
    d:'Variedad anaranjada con trocitos de ají visible y un toque picante único. Ideal para picar o asados.'
  },
  {
-   n:'Finas hierbas',
    full:'Queso costeño con finas hierbas',
    tag:'Aromático y fresco',
    image:'assets/queso-costeno-finas-hierbas.jpeg',
    imageAlt:'Queso con finas hierbas acompañado de pimentón rojo y cebolla morada',
-   base:'#E6EED0', edge:'#A8BD7A', labelBg:'#EEF3E2',
    d:'Queso redondo salpicado con finas hierbas integradas. Exquisito para tablas de quesos y gratinados.'
  }
 ];
-
-function rnd(s){return()=>(s=Math.imul(s^s>>>15,1|s),s=s+Math.imul(s^s>>>7,61|s)^s,((s^s>>>14)>>>0)/4294967296)}
-
-function cheese(i){
-  const f=F[i], r=rnd(19+i*31);
-  let o='';
-  
-  o+='<ellipse cx="200" cy="335" rx="145" ry="32" fill="#174B3A" opacity=".18"/>';
-  
-  o+='<path d="M 60 200 L 60 275 C 60 325 340 325 340 275 L 340 200 Z" fill="'+f.edge+'"/>';
-  
-  o+='<ellipse cx="200" cy="200" rx="140" ry="85" fill="'+f.base+'" stroke="'+f.edge+'" stroke-width="4"/>';
-  
-  if(i === 1) {
-    for(let k=0; k<65; k++){
-      const angle = r() * Math.PI * 2;
-      const rad = Math.sqrt(r()) * 118;
-      const x = 200 + Math.cos(angle) * rad;
-      const y = 200 + Math.sin(angle) * (rad * 0.58);
-      const sz = 2.5 + r() * 4;
-      o+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="'+sz.toFixed(1)+'" ry="'+(sz*0.6).toFixed(1)+'" fill="#C8342F" opacity=".88" transform="rotate('+(r()*360|0)+' '+x.toFixed(1)+' '+y.toFixed(1)+')"/>';
-    }
-  } else if(i === 2) {
-    for(let k=0; k<75; k++){
-      const angle = r() * Math.PI * 2;
-      const rad = Math.sqrt(r()) * 122;
-      const x = 200 + Math.cos(angle) * rad;
-      const y = 200 + Math.sin(angle) * (rad * 0.58);
-      const sz = 2 + r() * 3.5;
-      o+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="'+sz.toFixed(1)+'" ry="'+(sz*0.5).toFixed(1)+'" fill="#2C592B" opacity=".85" transform="rotate('+(r()*360|0)+' '+x.toFixed(1)+' '+y.toFixed(1)+')"/>';
-    }
-  } else {
-    for(let k=0; k<40; k++){
-      const angle = r() * Math.PI * 2;
-      const rad = Math.sqrt(r()) * 115;
-      const x = 200 + Math.cos(angle) * rad;
-      const y = 200 + Math.sin(angle) * (rad * 0.58);
-      o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(2 + r()*3.5).toFixed(1)+'" fill="'+f.edge+'" opacity=".55"/>';
-    }
-  }
-
-  o+='<ellipse cx="200" cy="195" rx="68" ry="42" fill="'+f.labelBg+'" stroke="#D18F08" stroke-width="3"/>';
-  o+='<ellipse cx="200" cy="195" rx="64" ry="38" fill="none" stroke="#252A25" stroke-width="1.5" stroke-dasharray="3 3"/>';
-  
-  o+='<image href="'+LOGO+'" x="154" y="152" width="92" height="64" preserveAspectRatio="xMidYMid meet"/>';
-
-  if(i === 0) {
-    o+='<path d="M 160 215 Q 200 225 240 215 L 235 228 Q 200 236 165 228 Z" fill="#E2C77A"/>';
-    o+='<text x="200" y="225" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="9" fill="#252A25">Tradicional</text>';
-  } else if(i === 1) {
-    o+='<path d="M 155 215 Q 200 226 245 215 L 240 228 Q 200 238 160 228 Z" fill="#C8342F"/>';
-    o+='<text x="200" y="225" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="9" fill="#FFFFFF">Picante</text>';
-  } else {
-    o+='<path d="M 150 215 Q 200 226 250 215 L 245 228 Q 200 238 155 228 Z" fill="#2C592B"/>';
-    o+='<text x="200" y="225" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="8.5" fill="#FFFFFF">Finas hierbas</text>';
-  }
-
-  if(i === 1) {
-    o+='<g transform="translate(225, 280) rotate(-15)">';
-    o+='<path d="M 0 0 Q 32 18 55 0 Q 32 28 0 0 Z" fill="#C8342F" stroke="#8B1A17" stroke-width="2"/>';
-    o+='<path d="M 0 0 Q -8 -10 -15 -5" fill="none" stroke="#2C592B" stroke-width="3" stroke-linecap="round"/>';
-    o+='</g>';
-  } else if(i === 2) {
-    o+='<g transform="translate(255, 275)">';
-    o+='<path d="M 0 20 Q 15 0 35 10 Q 15 25 0 20 Z" fill="#4F805B" stroke="#22422A" stroke-width="1.5"/>';
-    o+='<path d="M 10 28 Q 25 15 45 28 Q 20 40 10 28 Z" fill="#386143" stroke="#22422A" stroke-width="1.5"/>';
-    o+='</g>';
-  }
-
-  return o;
-}
-
-const cover=document.getElementById('cover');
-
-function draw(i){
-  cover.innerHTML=cheese(i);
-  document.querySelectorAll('.pick button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
-  sel.selectedIndex=i;
-  upd();
-}
-
-document.querySelectorAll('.pick button').forEach(b=>b.onclick=()=>draw(+b.dataset.f));
 
 document.getElementById('cat').innerHTML=F.map((f,i)=>`
   <article class="card prod rev">
@@ -163,7 +75,6 @@ function upd(){
   document.getElementById('tot').textContent=fmt(+qs.value*P);
 }
 
-sel.onchange=()=>draw(sel.selectedIndex);
 qs.onchange=upd;
 
 document.getElementById('add').onclick=()=>{
@@ -291,7 +202,7 @@ const io='IntersectionObserver'in window?new IntersectionObserver(es=>es.forEach
 document.querySelectorAll('.rev').forEach(el=>io?io.observe(el):el.classList.add('in'));
 
 tab(0);
-draw(0);
+upd();
 
 const themeToggle=document.getElementById('themeToggle');
 const systemPrefersDark=window.matchMedia('(prefers-color-scheme: dark)');
