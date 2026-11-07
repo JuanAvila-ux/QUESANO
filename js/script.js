@@ -26,7 +26,7 @@ const F=[
    n:'Finas hierbas',
    full:'Queso costeño con finas hierbas',
    tag:'Aromático y fresco',
-   image:'assets/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(1).jpeg',
+   image:'assets/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(3).jpeg',
    imageAlt:'Queso con finas hierbas acompañado de pimentón rojo y cebolla morada',
    base:'#E6EED0', edge:'#A8BD7A', labelBg:'#EEF3E2',
    d:'Queso redondo salpicado con finas hierbas integradas. Exquisito para tablas de quesos y gratinados.'
