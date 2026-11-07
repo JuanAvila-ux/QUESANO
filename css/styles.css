@@ -501,83 +501,91 @@ h2 {
   display:block
 }
 
-.market-targets {
-  display:grid;
-  gap:10px;
-  margin:0 0 22px
-}
-
-.market-targets-title {
-  font:800 .72rem var(--body);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted)
-}
-
-.market-flags {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px
-}
-
-.market-flag {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-  padding:14px 16px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--surface);
-  box-shadow:0 6px 18px rgba(23,75,58,.06)
-}
-
-.market-flag>span:first-child {
-  font-size:1.8rem;
-  line-height:1
-}
-
-.market-flag b,.market-flag small {
-  display:block
-}
-
-.market-flag b {
-  color:var(--head);
-  font-size:.92rem
-}
-
-.market-flag small {
-  color:var(--muted);
-  font-size:.72rem
-}
-
-.market-summary,.market-research {
-  color:var(--muted)
-}
-
 .market-summary {
-  margin:0 0 8px;
-  font-weight:700
+  margin:24px 0 12px;
+  color:var(--head);
+  font-size:1.2rem
 }
 
-.market-strategy {
+.international-heading {
+  max-width:860px;
+  margin:0 auto 36px;
+  text-align:center
+}
+
+.international-heading h2 {
+  margin-bottom:8px
+}
+
+.international-origin {
+  margin:0 0 12px;
+  color:var(--gold-dark);
+  font:600 1.25rem/1.5 var(--display)
+}
+
+.international-heading .sub {
+  margin:0 auto
+}
+
+.international-grid {
   display:grid;
-  gap:8px;
-  margin:0 0 14px;
-  padding-left:1.2em;
-  color:var(--muted)
+  grid-template-columns:minmax(0,1.7fr) minmax(240px,.7fr);
+  gap:36px;
+  align-items:start
 }
 
-.market-strategy b {
-  color:var(--text)
+.international-intro {
+  margin-top:0;
+  font-size:1.05rem
 }
 
-.market-research {
+.international-pillars {
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-bottom:24px
+}
+
+.international-pillars .card {
+  padding:20px
+}
+
+.international-pillars .card h3 {
+  font-size:1.05rem
+}
+
+.international-pillars .card p {
+  color:var(--muted);
+  font-size:.86rem
+}
+
+.international-aside {
+  display:grid;
+  gap:20px
+}
+
+.international-team {
+  display:grid;
+  justify-items:center;
+  gap:12px;
   margin:0;
-  font-size:.88rem
+  padding:22px
 }
 
-.split>div>p:not(.sub) {
+.international-photo {
+  display:block;
+  width:min(100%,230px);
+  height:auto;
+  border-radius:14px
+}
+
+.international-team figcaption {
+  color:var(--muted);
+  font-size:.82rem;
+  text-align:center
+}
+
+.international-copy>p,
+.international-team figcaption {
   color:var(--muted)
 }
 
@@ -622,6 +630,15 @@ h2 {
 @media(max-width:820px) {
   .split {
     grid-template-columns:1fr
+  }
+
+  .international-grid {
+    grid-template-columns:1fr
+  }
+
+  .international-aside {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    align-items:start
   }
 
   .story-milestones {
@@ -1278,6 +1295,11 @@ footer a {
   .hero {
     min-height:540px;
     padding:40px 18px 48px
+  }
+
+  .international-aside,
+  .international-pillars {
+    grid-template-columns:1fr
   }
 
   .hero>* {
