@@ -590,25 +590,6 @@ h2 {
   font:500 1.1rem/1.7 var(--display)
 }
 
-.analysis-pending {
-  display:grid;
-  gap:14px
-}
-
-.analysis-visual {
-  margin:0;
-  min-width:0
-}
-
-.analysis-visual img {
-  display:block;
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  border-radius:22px;
-  box-shadow:0 12px 32px rgba(23,75,58,.14)
-}
-
 .production-photo {
   display:block;
   width:min(100%,760px);
@@ -1336,10 +1317,6 @@ footer a {
   .prod .pic {
     aspect-ratio:1.2;
     padding:14px
-  }
-
-  .analysis-visual img {
-    max-height:360px
   }
 
   form {
