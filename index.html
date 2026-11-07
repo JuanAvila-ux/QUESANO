@@ -101,7 +101,7 @@ try {
     </div>
   </div>
   <figure class="analysis-visual">
-    <img src="assets/WhatsApp%20Image%202026-11-06%20at%2011.49.58%20AM%20(2).jpeg" alt="Variedades de queso Quesaño listas para compartir" loading="lazy" decoding="async">
+    <img src="assets/variedades-queso-costeno.jpeg" alt="Variedades de queso Quesaño listas para compartir" loading="lazy" decoding="async">
   </figure>
 </div></section>
 
@@ -121,7 +121,7 @@ try {
   <span class="eyebrow">Lo que nos hace especiales</span>
   <h2>Un sabor auténtico con origen</h2>
   <p class="sub">Desde Ariguaní, Magdalena trajimos el secreto de la preparación costeña y lo combinamos con la pureza de la leche de Boyacá.</p>
-  <img class="production-photo" src="assets/WhatsApp%20Image%202026-11-06%20at%2011.43.52%20AM%20(1).jpeg" alt="Dos operarios con cofia, tapabocas y delantales azules empacando queso Quesaño" loading="lazy" decoding="async">
+  <img class="production-photo" src="assets/proceso-de-produccion-quesano.jpeg" alt="Dos operarios con cofia, tapabocas y delantales azules empacando queso Quesaño" loading="lazy" decoding="async">
   <div class="cards">
     <div class="card rev"><div class="ic">🥛</div><h3>Leche pura local</h3><p>Proveniente de ganaderos de Ventaquemada, garantizando la mayor frescura en cada bloque.</p></div>
     <div class="card rev"><div class="ic">🧀</div><h3>Sabor costeño real</h3><p>Firme, con el punto ideal de sal para tus arepas, desayunos, patacones y recetas.</p></div>
@@ -141,7 +141,7 @@ try {
   <h2>Un modelo sencillo y directo</h2>
   <p class="sub">El precio es una referencia para esta propuesta académica; la disponibilidad y el valor final se confirman al hacer el pedido.</p>
   <div class="cards">
-    <article class="card rev"><h3>Precio estimado</h3><div class="price">$14.000<small>COP / 500 g</small></div><p>Precio de referencia por presentación. No se anuncian descuentos ni tarifas por volumen.</p></article>
+    <article class="card rev"><h3>Precio estimado</h3><div class="price">$14.000<small>COP / unidad (500 g)</small></div><p>Precio de referencia por cada unidad de 500 g. No se anuncian descuentos ni tarifas por volumen.</p></article>
     <article class="card rev"><h3>Cómo adquirirlo</h3><p>Selecciona una variedad y coordina tu pedido directamente por WhatsApp, sujeto a disponibilidad.</p></article>
     <article class="card rev"><h3>Cómo se sostiene</h3><p>La propuesta se sostiene mediante la venta directa de presentaciones de queso. Los costos y el precio final deben validarse antes de ofrecerlos comercialmente.</p></article>
   </div>
@@ -210,45 +210,70 @@ try {
     <ul class="nums">
       <li><span>1</span>Selecciona tu presentación y cantidad.</li>
       <li><span>2</span>Indica tu ciudad y los datos de entrega para confirmar la cobertura.</li>
-      <li><span>3</span>Confirma tu pedido directamente por WhatsApp.</li>
+      <li><span>3</span>Revisa los productos, el total y los datos de entrega.</li>
+      <li><span>4</span>Confirma el resumen para abrir WhatsApp.</li>
     </ul>
   </div>
-  <form autocomplete="off">
+  <form autocomplete="on">
     <h3>Arma tu pedido</h3>
-    <p class="s">Elige tus productos y se abrirá WhatsApp listo para enviar.</p>
-    <label for="nm">Tu nombre</label>
-    <input id="nm" placeholder="¿Cómo te llamas?">
-    <div class="two">
-      <div>
-        <label for="sel">Presentación</label>
-        <select id="sel"></select>
+    <p class="s">Completa los datos de entrega, revisa el pedido y luego confirma para abrir WhatsApp. Si la canasta tiene productos, se incluirán en el resumen.</p>
+    <div id="orderFields">
+      <label for="nm">Nombre de quien recibe</label>
+      <input id="nm" name="name" autocomplete="name" placeholder="¿Quién recibe el pedido?" minlength="2" required>
+      <div class="two">
+        <div>
+          <label for="sel">Presentación</label>
+          <select id="sel" required></select>
+        </div>
+        <div>
+          <label for="qs">Cantidad</label>
+          <select id="qs" required></select>
+        </div>
       </div>
-      <div>
-        <label for="qs">Cantidad</label>
-        <select id="qs"></select>
+      <label for="ent">Método de entrega</label>
+      <select id="ent" name="delivery" required>
+        <option value="" selected disabled>Selecciona cómo recibirás el pedido</option>
+        <option>Entrega en Tunja</option>
+        <option>Entrega en Santa Marta</option>
+        <option>Entrega en Barranquilla</option>
+        <option>Recoger en punto de atención Tunja</option>
+        <option>Otra zona (confirmar cobertura)</option>
+      </select>
+      <label for="ci">Dirección completa o punto de recogida</label>
+      <input id="ci" name="address" autocomplete="street-address" placeholder="Calle, número, barrio y ciudad o punto acordado" minlength="8" required>
+      <label for="de">Notas adicionales (opcional)</label>
+      <textarea id="de" placeholder="Indicaciones para encontrar la dirección"></textarea>
+
+      <div class="tot">
+        <span>Total estimado:</span>
+        <b id="tot">$14.000</b>
       </div>
+
+      <div class="fbtns">
+        <button type="button" class="btn ghost" id="add" style="color:#174B3A!important;border-color:#174B3A">🧺 Agregar a la canasta</button>
+        <button type="button" class="btn" id="reviewOrder">Revisar pedido</button>
+      </div>
+      <p class="note">No se enviará nada hasta que confirmes el resumen y abras WhatsApp.</p>
     </div>
-    <label for="ent">Método de entrega</label>
-    <select id="ent">
-      <option>Entrega en Tunja</option>
-      <option>Entrega en Santa Marta</option>
-      <option>Entrega en Barranquilla</option>
-      <option>Recoger en punto de atención Tunja</option>
-      <option>Otra zona (confirmar cobertura)</option>
-    </select>
-    <label for="ci">Ciudad, barrio o zona de entrega</label>
-    <input id="ci" placeholder="Ej. Tunja, Barrio Centro...">
-    <label for="de">Notas adicionales (opcional)</label>
-    <textarea id="de" placeholder="¿Es para tu consumo o para un establecimiento comercial?"></textarea>
-    
-    <div class="tot">
-      <span>Total estimado:</span>
-      <b id="tot">$14.000</b>
-    </div>
-    
-    <div class="fbtns">
-      <button type="button" class="btn ghost" id="add" style="color:#174B3A!important;border-color:#174B3A">🧺 Agregar a la canasta</button>
-      <button type="button" class="btn" id="go">Continuar a WhatsApp ↗</button>
+
+    <div id="orderReview" class="order-review" hidden aria-live="polite">
+      <h4 id="orderReviewTitle" tabindex="-1">Confirma los datos del pedido</h4>
+      <div id="reviewItems"></div>
+      <dl>
+        <div><dt>Recibe</dt><dd id="reviewName"></dd></div>
+        <div><dt>Entrega</dt><dd id="reviewDelivery"></dd></div>
+        <div><dt>Dirección</dt><dd id="reviewAddress"></dd></div>
+        <div id="reviewNotesRow" hidden><dt>Indicaciones</dt><dd id="reviewNotes"></dd></div>
+      </dl>
+      <div class="tot">
+        <span>Total estimado:</span>
+        <b id="reviewTotal"></b>
+      </div>
+      <div class="fbtns">
+        <button type="button" class="btn ghost" id="editOrder">Editar datos</button>
+        <button type="button" class="btn" id="sendOrder">Confirmar y abrir WhatsApp ↗</button>
+      </div>
+      <p class="note" id="orderStatus" role="status" hidden></p>
     </div>
     <p class="note">Precios expresados en COP. Entregas sujetas a cobertura y confirmación de disponibilidad.</p>
   </form>
@@ -272,7 +297,7 @@ try {
   <p class="sub">El formulario prepara un mensaje con los datos que escribes. Tú decides si continúas a WhatsApp y lo envías; la página no tiene un sistema propio para guardar pedidos.</p>
   <div class="cards">
     <article class="card rev"><h3>Compromisos</h3><p>Solicitar solo información necesaria; usarla para atender solicitudes relacionadas con QUESANO y no compartirla sin autorización previa.</p></article>
-    <article class="card rev"><h3>Riesgo identificado</h3><p>Uso inadecuado o divulgación no autorizada de datos personales, como el nombre o la zona de entrega incluidos en un mensaje.</p></article>
+    <article class="card rev"><h3>Riesgo identificado</h3><p>Uso inadecuado o divulgación no autorizada de datos personales, como el nombre y la dirección completa incluidos en un mensaje.</p></article>
     <article class="card rev"><h3>Medidas preventivas</h3><p>Limitar los datos solicitados, restringir su acceso a integrantes autorizados del proyecto y pedir autorización antes de compartirlos.</p></article>
   </div>
 </div></section>
@@ -282,8 +307,8 @@ try {
   <h2>Conoce el proyecto</h2>
   <p class="sub">Consulta las infografías en una vista separada, sin interrumpir el recorrido por la página principal.</p>
   <div class="cards strategy-links">
-    <article class="card"><h3>Modelo de Negocio Canvas</h3><p>Explora la estructura del modelo de negocio de Quesaño.</p><a class="btn" href="assets/WhatsApp%20Image%202026-11-06%20at%2012.29.18%20PM.jpeg" target="_blank" rel="noopener">Ver Modelo Canvas ↗</a></article>
-    <article class="card"><h3>Guía de Prototipo Exportable</h3><p>Consulta la guía visual del prototipo de producto para exportación.</p><a class="btn" href="assets/WhatsApp%20Image%202026-11-06%20at%2012.37.20%20PM.jpeg" target="_blank" rel="noopener">Ver guía ↗</a></article>
+    <article class="card"><h3>Modelo de Negocio Canvas</h3><p>Explora la estructura del modelo de negocio de Quesaño.</p><a class="btn" href="assets/modelo-de-negocio-canvas.jpeg" target="_blank" rel="noopener">Ver Modelo Canvas ↗</a></article>
+    <article class="card"><h3>Guía de Prototipo Exportable</h3><p>Consulta la guía visual del prototipo de producto para exportación.</p><a class="btn" href="assets/guia-de-prototipo-exportable.jpeg" target="_blank" rel="noopener">Ver guía ↗</a></article>
   </div>
 </div></section>
 
@@ -316,7 +341,7 @@ try {
     <h3>Tu Canasta</h3>
     <div id="items"></div>
     <div class="tot"><span>Total estimado:</span><b id="ctot">$0</b></div>
-    <a class="btn" id="cwa" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    <a class="btn" id="cwa" href="#pedido">Completar datos y revisar pedido</a>
   </div>
 </div>
 

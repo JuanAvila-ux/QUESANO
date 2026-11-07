@@ -45,7 +45,6 @@
 
       empty.append(message, catalogLink);
       items.append(empty);
-      cartLink.href = '#';
       return;
     }
 
@@ -57,7 +56,7 @@
       const name = document.createElement('b');
       name.textContent = item.product.full;
       const details = document.createElement('small');
-      details.textContent = `500 g · ${fmt(P)}`;
+      details.textContent = `${fmt(P)} por unidad · 500 g`;
       description.append(name, details);
 
       const quantity = document.createElement('div');
@@ -85,11 +84,7 @@
       items.append(row);
     }
 
-    const lines = cartItems
-      .map(item => `• ${item.quantity} x ${item.product.full} (500 g)`)
-      .join('\n');
-    const message = `Hola QUESANO, quiero hacer el siguiente pedido:\n${lines}\n\nTotal estimado: ${fmt(cartTotal)} COP.`;
-    cartLink.href = `https://wa.me/${PH}?text=${encodeURIComponent(message)}`;
+    cartLink.href = '#pedido';
   }
 
   function add(productIndex, amount = 1) {
@@ -127,6 +122,7 @@
   });
 
   cartButton.addEventListener('click', () => open());
+  cartLink.addEventListener('click', () => open(false));
   drawer.addEventListener('click', event => {
     if (event.target === drawer) open(false);
   });
